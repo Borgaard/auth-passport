@@ -28,7 +28,6 @@ var users = [{id: 1,
              	password: "cupcakes", 
              	email: "nicole@downwithmuffins.com"}];
 
-
 function findByUsername(username, fn) {
 	for (var i = 0, len = users.length; i < len; i++) {
 		var user = users[i];
@@ -72,8 +71,6 @@ passport.use(localStrategy);
 app.use(passport.initialize());
 app.use(passport.session());
 
-
-
 app.get('/', function(req, res) {
 	var user = req.user
 	res.render('index', {user: user});
@@ -98,12 +95,6 @@ app.post('/logmein', passport.authenticate('local',
 	{failureRedirect: '/login'}), function(req, res) {
 	res.redirect('/profile');
 });
-
-
-
-
-
-
 
 app.listen(8080, function() {
 	console.log("Authentication app on 8080!");
